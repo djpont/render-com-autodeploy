@@ -5,16 +5,10 @@ services:
     runtime: docker
     buildCommand: docker-compose build --no-cache client
     startCommand: docker-compose up -d client
-    healthCheckPath: /
-    port: 3000
     dockerfilePath: ./Dockerfile.client
-    buildDir: .
   - type: web
     name: server
     runtime: docker
     buildCommand: docker-compose build --no-cache server
     startCommand: docker-compose up -d server
-    healthCheckPath: /ping
-    port: 5000
     dockerfilePath: ./Dockerfile.server
-    buildDir: .
