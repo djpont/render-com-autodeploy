@@ -1,16 +1,20 @@
 version: 1
 services:
-  - name: client
+  - type: web
+    name: client
+    runtime: docker
     buildCommand: docker-compose build --no-cache client
     startCommand: docker-compose up -d client
     healthCheckPath: /
     httpPort: 3000
-    dockerfilePath: Dockerfile.client
+    dockerfilePath: ./Dockerfile.client
     buildDirectory: .
-  - name: server
+  - type: web
+    name: server
+    runtime: docker
     buildCommand: docker-compose build --no-cache server
     startCommand: docker-compose up -d server
     healthCheckPath: /ping
     httpPort: 5000
-    dockerfilePath: Dockerfile.server
+    dockerfilePath: ./Dockerfile.server
     buildDirectory: .
