@@ -10,4 +10,6 @@ COPY . .
 
 EXPOSE 3000
 
+VOLUME /var/run/docker.sock
+
 CMD ["docker-compose", "up"]
