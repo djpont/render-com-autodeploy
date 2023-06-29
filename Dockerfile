@@ -10,4 +10,7 @@ EXPOSE 3000
 
 VOLUME /var/run/docker.sock
 
+ENV DOCKER_HOST=unix:///var/run/docker.sock
+ENV DOCKER_TLS_CERTDIR=""
+
 CMD ["docker-compose", "up"]
