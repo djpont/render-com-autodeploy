@@ -1,0 +1,14 @@
+ARG NODE_VERSION
+
+FROM node:${NODE_VERSION}-buster
+
+WORKDIR /app
+
+COPY packages/client .
+
+RUN npm install
+RUN npm run build
+
+EXPOSE ${CLIENT_PORT}
+
+CMD ["node", "server.cjs"]

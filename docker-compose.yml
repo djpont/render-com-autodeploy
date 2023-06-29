@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+  server:
+    container_name: server
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+      args:
+        NODE_VERSION: ${NODE_VERSION}
+        SERVER_PORT: ${SERVER_PORT}
+    restart: always
+    expose:
+      - ${SERVER_PORT}
+    ports:
+      - "${SERVER_PORT}:${SERVER_PORT}"
+    environment:
+      - SERVER_PORT=${SERVER_PORT}
+    networks:
+      - awesome
+
+  client:
+    container_name: client
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+      args:
+        NODE_VERSION: ${NODE_VERSION}
+        CLIENT_PORT: ${CLIENT_PORT}
+    restart: always
+    ports:
+      - "${CLIENT_PORT}:${CLIENT_PORT}"
+    environment:
+      - CLIENT_PORT=${CLIENT_PORT}
+      - SERVER_PORT=${SERVER_PORT}
+    networks:
+      - awesome
+
+networks:
+  awesome:
+    driver: bridge
