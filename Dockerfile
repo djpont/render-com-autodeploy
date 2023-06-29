@@ -18,8 +18,6 @@ WORKDIR /app
 
 COPY . .
 
-COPY /etc/secrets/.env .env
-
 EXPOSE 3000
 
 CMD ["docker-compose", "-f", "./docker-compose.yml", "up"]
