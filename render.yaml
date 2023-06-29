@@ -4,11 +4,9 @@ services:
     name: client
     runtime: docker
     buildCommand: docker-compose build --no-cache client
-    startCommand: docker-compose up -d client
     dockerfilePath: ./Dockerfile.client
   - type: web
     name: server
     runtime: docker
     buildCommand: docker-compose build --no-cache server
-    startCommand: docker-compose up -d server
     dockerfilePath: ./Dockerfile.server
