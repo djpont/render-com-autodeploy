@@ -8,9 +8,6 @@ COPY . .
 
 EXPOSE 3000
 
-VOLUME /var/run/docker.sock
-
-ENV DOCKER_HOST=unix:///var/run/docker.sock
-ENV DOCKER_TLS_CERTDIR=""
+VOLUME /var/run/docker.sock:/var/run/docker.sock
 
 CMD ["docker-compose", "up"]
